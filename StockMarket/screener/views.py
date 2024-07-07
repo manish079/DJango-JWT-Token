@@ -26,5 +26,7 @@ from rest_framework.permissions import IsAuthenticated
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def ghost(request):
+    # if request.method != 'GET':
+    #     return Response({"message": "Method not allowed."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     print("lllllllllll: ", request.user.email)
     return Response({"message": "Hello, World! I am Ghost!", "userId": request.user.id})
