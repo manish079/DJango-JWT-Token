@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.http import JsonResponse
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('api/', include('Login.urls')),
-     path("screener/", include("screener.urls"))
+    path("screener/", include("screener.urls")),
+    path('default/<int:number>/', lambda request, number: JsonResponse({"message": f"This is default role with  {number} number"}), name='default'),
 ]
